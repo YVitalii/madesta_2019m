@@ -1,0 +1,44 @@
+extends layout
+block header
+    table
+      tr
+        td
+          img(height="80px"  src="Logotip_small.png")
+        td
+          div.alert.alert-primary(role="alert")
+            h1(align='center') СДО-20.30.18/10 ВЦ     
+            
+
+
+block menu
+  input.form-control.form-control-lg.h4(type="number" min="0" max="50" value="10" id=pref+"2")
+  
+      
+  
+           
+
+block footer  
+  div.alert.alert-primary.footer(role="alert")       
+    table(width="100%")
+      td(width="25%")
+        div#dateNow
+          h5 
+            - var now=new Date()
+            - var today=now.getFullYear()+"-"+("0"+(now.getMonth()+1)).slice(-2)+"-"+("0"+now.getDate()).slice(-2);
+            - var timeNow=now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+            = today
+      td(width="25%")
+        div#timeNow
+          h5
+            = timeNow
+      td(width="25%")
+        a(href="/" id="toReportPage" type="button" class="btn btn-success  btn-lg"  role="button" aria-pressed="true") Работа
+        //button#resetDev(type="button" class="btn btn-warning") Перезагрузить 
+  script
+    // scripts
+    include ./js/footer.js
+    
+          
+            
+            
+          
