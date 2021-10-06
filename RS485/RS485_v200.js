@@ -18,6 +18,7 @@
 */
 
 
+const log=require('../log.js');
 
 var buffer=new Buffer(0); // буфер приема данных
 const SerialPort= require('serialport');
@@ -436,17 +437,39 @@ function test_checkBuffer(){
 
 
 
+
 if (! module.parent) {
+    let req = {id:5,FC:3,addr:0x4006,data:0x2,timeout:1500};
+  function tetr(b){
+  return ("00000000"+b.toString(2)).slice(-8)}
+  function test (req) {
+    let rsAddr=req.id;
+    let reg=req.addr;
+    addTask(req,(err,data) => {
+      let text="RS485="+rsAddr+";reg="+reg.toString(16)+":";
+           if (err){log ("e",text+" Err: "+err.message) }
+           if (data) {
+           log("i",text+":data="+parseBuf(data));
+           let d=tetr(data[0])+"-"+tetr(data[1])+"-"+tetr(data[2])+"-"+tetr(data[3]);
+           log("i",": "+d);
+           //("00000000000000000000000000000000"+data.readUInt32BE().toString(2)).slice(-32));
+           }
+       })//addTask
+  } //function test
+  //req.data=2;
+  test(req);
+  setInterval(function (){test(req)},2000);
+  //req = {id:1,FC:3,addr:0x01,data:0x1,timeout:1500};
+  //test(req);
   //test_checkBuffer();
   //init("COM9",2400,(err) => {if (err) console.log(err);});
-function  test(){
+//function  test(){
   // для тестирования
-
-  for (var i = 496; i < 0xfffe; i++) {
-    console.log("i=",i);
-    tasked(i)();
-  }}
-test();
+  //for (var i = 496; i < 0xfffe; i++) {
+    //console.log("i=",i);
+    //tasked(i)();
+ // }}
+// test();
 //for
   /*tasked(256)();
   tasked(288)();
@@ -480,3 +503,4 @@ test();
   })//addTask
 */
 }
+
