@@ -1,0 +1,50 @@
+//- Отрисовывает участок страницы для редактирования программы
+-var steps=3;
+-var types=[{kind:"heatTreatment", caption:"Термообработка"}];
+
+
+  
+mixin taskRow(i)
+  -var pref="R"+i+";C";//префикс строки Ri-C для id
+  tr
+    th(style="vertical-align:middle;" )
+      =i+1
+    
+    td 
+      input.form-control.form-control-lg.h4(type="number" min="0" max="1000" value="0" id=pref+"1")
+    td
+      input.form-control.form-control-lg.h4(type="number" min="0" max="50" value="10" id=pref+"2")
+    td 
+      input.form-control.form-control-lg.h4(type="time" min="00:00" max="99:59" value="00:00" id=pref+"3")
+    td 
+      input.form-control.form-control-lg.h4(type="time" min="00:00" max="99:59" value="00:00" id=pref+"4")
+      
+    
+//- ---- таблица с шагами  -----------------------
+div.flex-container-vertical.allFreeSpace
+   div.h3.alert.alert-info Редактор программы
+   div.h4
+     table.table.table-bordered#programTable
+       tr
+         th(align="center") &#8470;
+         th Температура &deg;C
+         th &plusmn;&nbsp;&deg;C
+         th Разогрев 
+         th Выдержка
+       - for (var i = 0; i<steps; i++)
+            +taskRow(i)
+       tr
+         td(colspan='6')
+           div.flex-container-horizontal.h4
+              b(id="programSave" type="success" class="btn btn-primary  btn-lg" value=0 ) Сохранить 
+              b(id="programReset" type="reset" class="btn btn-warning  btn-lg" value=0 ) Отмена 
+
+
+script 
+  include makeProgram_init.js   
+
+//- ---------- кнопка сохранить   ----------------
+//-td(style="vertical-align:middle;font-size:1.5rem" align="center")
+  select.form-control.form-control-lg(id=pref+"1" kind=types.kind)
+    option
+      =types[0].caption

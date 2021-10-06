@@ -1,0 +1,67 @@
+extends layout
+block header
+    table
+      tr
+        td
+          img(height="80px"  src="Logotip_small.png")
+        td
+          div.alert.alert-primary(role="alert")
+            h1 СУЗМ-10.70.10/8,5ВМ
+block menu
+  ul.nav.nav-pills
+    li.nav-item
+      a.nav-link.active(href="#") Работа
+    li.nav-item
+      a.nav-link(href="#") Программа
+    li.nav-item
+      a.nav-link(href="#") Архив
+
+block footer
+  div.footer
+           
+      div#dateNow
+        h5 
+          - var now=new Date()
+          - var today=now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate();
+          - var timeNow=now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+          = today
+      div#timeNow
+        h5
+          = timeNow
+      button#powerOff(type="button" class="btn btn-danger") Выключить
+      button#reset(type="button" class="btn btn-warning") Перезагрузить 
+          
+            
+            
+      h4
+        table.table.table-sm(width="100%")
+          tr
+            //td -dT
+            td T 
+            td
+              input.form-control.form-control-lg(type="number" value="100" min="100" max="1000"  id="tT")
+              ///+inputFolder("tT","number")
+            //td +dT
+            td H
+            td
+              +inputField("H")
+            td Y
+            td
+              +inputField("Y")
+            td
+              button#startStop(type="button" class="btn btn-warning") Пуск   
+              
+              
+              
+                
+              div.form-row.h5
+                div.form-group.col-md-3
+                  label.h5(for="pr_tT") Задание *C
+                  input.formControl.form-control-lg(type="number" value="100" min="100" max="1000" id="pr_tT")
+                div.form-group.col-md-3
+                  label(for="H") Время разогрева
+                  input.formControl.form-control-lg(type="time" value="00:00" id="pr_H")
+                div.form-group.col-md-3
+                  label(for="H") Время удержания
+                  input.formControl.form-control-lg(type="time" value="00:00" id="pr_H")
+                button.btn.btn-primary(type="submit") Пуск/Стоп

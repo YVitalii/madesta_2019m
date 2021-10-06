@@ -1,0 +1,22 @@
+doctype html
+html(lang='ru')
+  head
+    meta(content="text/html; charset=utf-8",http-equiv="content-type")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title= title
+    link(href="/bootstrap/bootstrap.min.css",rel="stylesheet")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
+    link(rel='stylesheet', href='dygraph/dygraph.css')
+  body
+    div.wrapper
+      block header
+      hr
+      block menu
+      hr
+      block content
+      hr
+      block footer
+    script(src="/bootstrap/jquery-3.4.1.min.js")
+    script(src="/bootstrap/popper.min.js")
+    script(src="/bootstrap/bootstrap.min.js")

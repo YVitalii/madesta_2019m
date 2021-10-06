@@ -1,0 +1,68 @@
+extends headerFooter
+
+
+block content
+  
+  //h2 Процесс: ожидание
+
+  //- заголовки данных
+  - var T_list=T_headers.split(';');
+  
+  mixin rowTask(i)
+    //рисует строку задания
+    tr
+      td
+        input.h4(type="number" name="tT" value="100" min="70" max="1000" size="4" id="st"+i+"_pr_tT")
+      td
+        input.h4(type="time" name="H" value="00:00" id="st"+i+"_pr_H") 
+      td
+        input.h4(type="time" name="Y" value="00:00" id="st"+i+"_pr_Y")
+        
+    
+  mixin T_row(name,state)
+    //- рисует строку таблицы данных
+    tr
+      td
+      
+        h4(align='center')
+          =name 
+      td
+        h4(id=name align='center' class="value") ???
+      td
+        h4(id=state align='center' class="value") ???  
+
+  div.content
+    //- таблица отображения цифровых данных
+    table(width="100%"  )
+      tr
+        td(width="20%")
+          table(width="100%" class="table table-bordered")
+            - for (var i = 0; i<3; i++)
+                +T_row(T_list[i],+(i+1)+"-state")
+            +T_row("T4","контр")
+        
+          table(width="100%" class="table table-bordered")
+            tr
+              td(colspan="3" align='center') 
+                h3 Задание
+            tr
+              td
+                h3(color="blue" align='center') T1,Т2,Т3, &#8451 
+              td
+                h3(color="blue" align='center') H
+              td
+                h3(color="blue" align='center') У
+              +rowTask(1)
+              +rowTask(2)
+            tr
+              td(colspan="3" align='center')
+                button.btn.btn-primary(type="submit" id="startStop") Пуск/Стоп 
+          script
+            include ./js/startStop.js
+          script
+            include ./temperature/temperature.js
+        td.graph#dygraph
+          include ./dygraph/dygraph.pug
+    script.
+      // запускаем отрисовку графика
+      // setInterval(graph_drawData,5000);

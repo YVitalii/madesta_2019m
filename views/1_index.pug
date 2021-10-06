@@ -1,0 +1,41 @@
+extends layout
+block header
+    table
+      tr
+        td
+          img(height="80px"  src="Logotip_small.png")
+        td
+          div.alert.alert-primary(role="alert")
+            h1 СУЗМ-10.70.10/8,5ВМ
+block menu
+  ul.nav.nav-pills
+    li.nav-item
+      a.nav-link.active(href="#") Работа
+    li.nav-item
+      a.nav-link(href="#") Программа
+    li.nav-item
+      a.nav-link(href="#") Архив
+
+block footer
+  divalert.alert-primary.footer(role="alert")
+    
+      
+        
+          //h5 Сегодня:
+        div#dateNow
+          h5 
+            - var now=new Date()
+            - var today=now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate();
+            - var timeNow=now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+            = today
+        
+        div#timeNow
+          h5
+            = timeNow
+      
+        button#powerOff(type="button" class="btn btn-danger") Выключить
+        button#reset(type="button" class="btn btn-warning") Перезагрузить 
+          
+            
+            
+          

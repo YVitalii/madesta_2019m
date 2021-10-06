@@ -1,0 +1,31 @@
+extends headerFooter
+
+
+block content
+  h2 Процесс: ожидание
+
+  //- заголовки данных
+  - var T_list=['T01','T02','T03','T04','T05','T06','T07','T08','T09','P',"N2"]
+  mixin T_row(name)
+    //- рисует строку таблицы данных
+    tr
+      td
+        h3(align='center')
+          =name
+      td
+        h3(id=name align='center') none
+
+  div.content
+    //- таблица отображения цифровых данных
+    table(width="100%" height="100%")
+      tr
+        td(width="20%")
+          table( class='table table-bordered' width="100%")
+            - for (var i = 0; i<T_list.length; i++)
+                +T_row(T_list[i])
+
+          include ./temperature/temperature.js
+        td.graph#dygraph
+          include ./dygraph/dygraph.pug
+br
+br
