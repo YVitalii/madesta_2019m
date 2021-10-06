@@ -6,6 +6,7 @@
 /.pnp
 .pnp.js
 .bak
+.7z
 package-lock.json
 
 
