@@ -1,0 +1,44 @@
+  {
+      "ModificationStatus": 0,
+      "Token": 10472,
+      "AdditionalFields": [],
+      "CardCode": "3800EC9B7C",
+      "Department": {
+        "Token": 2521,
+        "Name": "Цех"
+      },
+      "Device": {
+        "Token": 1363,
+        "Name": "Прохідна"
+      },
+      "EventFilterPassed": true,
+      "FaceMaskDetected": false,
+      "IconToken": 2919,
+      "Issued": "/Date(1628056200000)/",
+      "Message": {
+        "Token": 216,
+        "Name": "Вхід дозволений",
+        "AccessGranted": true,
+        "Code": 8,
+        "Color": 255
+      },
+      "PhotoToken": 2918,
+      "PhotoverificationFiltersPassed": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "Sender": {
+        "Token": 1384,
+        "Name": "1 - вхід"
+      },
+      "Temperature": 0,
+      "User": {
+        "Token": 2914,
+        "Name": "Горнакова Татьяна ",
+        "AdditionalFields": [],
+        "EmployeeNumber": "27",
+        "Post": "Прибиральник"
+      }
+    },
